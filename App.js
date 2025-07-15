@@ -5,8 +5,7 @@ import { useState, useEffect } from 'react';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native'
-import ShopStackNavigator from './src/navigation/ShopStackNavigator';
-
+import TabNavigator from './src/navigation/tab/TabNavigator';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -38,7 +37,7 @@ export default function App() {
       <Header title="Welcome to My App" />
       <NavigationContainer>
       <StatusBar style="light" />
-        <ShopStackNavigator />
+        <TabNavigator />
       </NavigationContainer>
     </>
   );
