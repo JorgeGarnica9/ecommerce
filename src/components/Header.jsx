@@ -21,5 +21,6 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 24,
         color: colors.white,
+        fontFamily: 'PressStart2P-Regular',
     }
 })
