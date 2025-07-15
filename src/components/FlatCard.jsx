@@ -15,7 +15,7 @@ export default FlatCard
 const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
-        backgroundColor: colors.lightGrey,
+        backgroundColor: colors.lightGray,
         alignItems: 'center',  
         paddingVertical: 24,
         marginVertical: 8,
