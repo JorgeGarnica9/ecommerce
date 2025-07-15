@@ -1,17 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
 import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import Header from './src/components/Header';
-import CategoriesScreen from './src/screens/CategoriesScreen';
-import ProductsScreen from './src/screens/ProductsScreen';
 import { useState, useEffect } from 'react';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import { NavigationContainer } from '@react-navigation/native'
+import ShopStackNavigator from './src/navigation/ShopStackNavigator';
+
 
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
 
-  const [categorySelected, setCategorySelected] = useState('consolas');
   const [loaded, error] = useFonts({
     'Karla-Bold': require('./assets/fonts/Karla-Bold.ttf'),
     'Karla-Regular': require('./assets/fonts/Karla-Regular.ttf'),
@@ -36,13 +36,10 @@ export default function App() {
   return (
     <>
       <Header title="Welcome to My App" />
+      <NavigationContainer>
       <StatusBar style="light" />
-      {
-        categorySelected ? 
-        <ProductsScreen category={categorySelected} />
-        :
-        <CategoriesScreen setCategorySelected={setCategorySelected}/>
-      }
+        <ShopStackNavigator />
+      </NavigationContainer>
     </>
   );
 }
