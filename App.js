@@ -20,6 +20,7 @@ export default function App() {
     'Karla-BoldItalic': require('./assets/fonts/Karla-BoldItalic.ttf'),
     'Karla-Italic': require('./assets/fonts/Karla-Italic.ttf'),
     'PressStart2P-Regular': require('./assets/fonts/PressStart2P-Regular.ttf'),
+    'Audiowide': require('./assets/fonts/Audiowide-Regular.ttf'),
 
   });
 
@@ -37,7 +38,7 @@ export default function App() {
   return (
     <>
     <Provider store={store}>
-      <Header title="Welcome to My App" />
+      <Header title="FREAKYSTORE" subtitle="by JORGE GARNICA"/>
       <NavigationContainer>
       <StatusBar style="light" />
         <TabNavigator />
