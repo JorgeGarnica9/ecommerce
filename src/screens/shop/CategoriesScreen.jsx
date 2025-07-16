@@ -6,15 +6,16 @@ import {
   Image,
   Pressable,
 } from "react-native";
-// import categories from "../../data/categories.json";
 import FlatCard from "../../components/FlatCard";
 import TextKarlaRegular from "../../components/TextKarlaRegular";
 import {useSelector, useDispatch} from "react-redux";
 import { setCategorySelected, filterProducts } from "../../features/shop/shopSlice";
+import { useGetCategoriesQuery } from "../../services/shop/shopApi";
 
 const CategoriesScreen = ({ navigation }) => {
   const dispatch = useDispatch();
-  const categories = useSelector((state) => state.shopReducer.categories);
+  // const categories = useSelector((state) => state.shopReducer.categories);
+  const { data:categories, isLoading, error } = useGetCategoriesQuery();
 
 
   const renderCategoryItem = ({ item }) => (
