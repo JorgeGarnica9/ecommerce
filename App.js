@@ -4,10 +4,11 @@ import Header from './src/components/Header';
 import { useState, useEffect } from 'react';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import { NavigationContainer } from '@react-navigation/native'
+// import { NavigationContainer } from '@react-navigation/native'
 import TabNavigator from './src/navigation/tab/TabNavigator';
 import { Provider } from 'react-redux';
 import store from './src/store/index';
+import MainNavigator from './src/navigation/main/MainNavigator';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -39,11 +40,11 @@ export default function App() {
     <>
     <Provider store={store}>
       <Header title="FREAKYSTORE" subtitle="by JORGE GARNICA"/>
-      <NavigationContainer>
+      {/* <NavigationContainer> */}
       <StatusBar style="light" />
-        <TabNavigator />
-      </NavigationContainer>
-
+        {/* <TabNavigator /> */}
+      {/* </NavigationContainer> */}
+      <MainNavigator />
     </Provider>
     </>
   );

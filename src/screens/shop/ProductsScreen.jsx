@@ -5,6 +5,8 @@ import { colors } from '../../global/colors';
 import { useEffect, useState } from 'react';
 import Search from '../../components/Search';
 import { useSelector } from 'react-redux';
+import { useGetProductsByCategoryQuery } from '../../services/shop/shopApi';
+import { useDispatch } from 'react-redux';
 
 const ProductsScreen = ({navigation}) => {
 
@@ -12,7 +14,9 @@ const ProductsScreen = ({navigation}) => {
     const [keyword, setKeyword] = useState('');
     const products = useSelector((state) => state.shopReducer.products);
     const category = useSelector((state) => state.shopReducer.categorySelected);
-    const productsFilteredByCategory = useSelector((state) => state.shopReducer.productsFilteredByCategory);
+    const { data: productsFilteredByCategory, isLoading, error } = useGetProductsByCategoryQuery(category);
+    const dispatch = useDispatch();
+    // const productsFilteredByCategory = useSelector((state) => state.shopReducer.productsFilteredByCategory);
 
     useEffect(() => {
       // const productsFilteredByCategory = products.filter(product => product.category.toLowerCase() === category.toLowerCase())
@@ -24,7 +28,7 @@ const ProductsScreen = ({navigation}) => {
         setProductsFiltered(productsFilteredByKeyword);
       } else {
         setProductsFiltered(productsFilteredByCategory)};  
-    },[category,keyword]);
+    },[category,keyword, productsFilteredByCategory]);
         
     
             
