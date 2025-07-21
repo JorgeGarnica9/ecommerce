@@ -10,10 +10,10 @@ export default function ShopStackNavigator() {
 
   return (
       <Stack.Navigator
-      initialRouteName='Categories'>
-        <Stack.Screen name="Categories"  component={CategoriesScreen} />
-        <Stack.Screen name="Products" component={ProductsScreen} />
-        <Stack.Screen name="Product" component={ProductScreen} />
+      initialRouteName='Categorías'>
+        <Stack.Screen name="Categorías"  component={CategoriesScreen} />
+        <Stack.Screen name="Productos" component={ProductsScreen} />
+        <Stack.Screen name="Producto" component={ProductScreen} />
       </Stack.Navigator>
   )
 }

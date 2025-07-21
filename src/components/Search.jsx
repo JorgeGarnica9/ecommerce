@@ -8,7 +8,8 @@ const Search = ({keyword,setKeyword}) => {
       <TextInput 
       onChangeText={(text) => setKeyword(text)}
       style={styles.searchInput}
-      value={keyword}/>
+      value={keyword}
+      placeholder='Busca por nombre'/>
       <Ionicons name="search" size={32} color={colors.darkGrey} />
     </View>
   )

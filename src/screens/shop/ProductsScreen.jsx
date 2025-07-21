@@ -34,9 +34,9 @@ const ProductsScreen = ({navigation}) => {
             
 
     const renderProductItem = ({ item }) => (
-      <Pressable onPress={() => navigation.navigate('Product',{product:item})}>
+      <Pressable onPress={() => navigation.navigate('Producto',{product:item})}>
 
-        <FlatCard style={{backgroundColor: colors.white}}>
+        <FlatCard style={{backgroundColor: colors.lightGray}}>
             <Text>{item.title}</Text>
 
         </FlatCard>

@@ -17,10 +17,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: colors.lightGray,
         alignItems: 'center',  
-        paddingVertical: 24,
+        paddingVertical: 20,
         marginVertical: 8,
-        shadowColor: colors.black,
-        elevation: 8,
+        shadowColor: colors.blue,
+        elevation: 10,
     }
 
 })

@@ -51,12 +51,12 @@ const CartScreen = () => {
             data={cartItems}
             keyExtractor={item => item.id}
             renderItem={renderCartItem}
-            ListHeaderComponent={<Text style={styles.cartScreenTitle}>Tu carrito:</Text>}
+            ListHeaderComponent={<Text style={styles.cartScreenTitle}>Productos agregados:</Text>}
             ListFooterComponent={<FooterComponent />}
           />
 
           :
-          <Text>Aún no hay productos en el carrito</Text>
+            <Text style={styles.text}>Tu carrito de compras se encuentra vacío. </Text>
       }
     </>
   )
@@ -123,6 +123,13 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     textAlign: "center",
     paddingVertical: 8
-  }
+  },
+  text: {
+        color: colors.blue,
+        fontFamily: "Audiowide",
+        fontSize: 22,
+        textAlign: 'center',
+        marginTop: 32,
+    },
 
 })

@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
         marginVertical: 16
     },
     textBrand: {
-        color: colors.grisOscuro,
+        color: colors.darkGray,
     },
     textTitle: {
         fontSize: 24,
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     tagText: {
         fontWeight: '600',
         fontSize: 14,
-        color: colors.purple
+        color: colors.blue
     },
     price: {
         fontWeight: '800',
@@ -110,12 +110,12 @@ const styles = StyleSheet.create({
     addToCartButton: {
         padding: 8,
         paddingHorizontal: 16,
-        backgroundColor: colors.purple,
+        backgroundColor: colors.blue,
         borderRadius: 16,
         marginVertical: 16
     },
     textAddToCart: {
-        color: colors.white,
+        color: colors.lightGray,
         fontSize: 24,
         textAlign: 'center',
     }

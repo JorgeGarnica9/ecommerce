@@ -22,7 +22,8 @@ const CategoriesScreen = ({ navigation }) => {
     <Pressable onPress={() => {
       dispatch(setCategorySelected(item.title));
       dispatch(filterProducts(item.title));
-      navigation.navigate("Products");
+      navigation.navigate("Productos");
+      
     }}>
       <FlatCard>
         <View style={styles.categoryContainer}>
@@ -37,6 +38,7 @@ const CategoriesScreen = ({ navigation }) => {
       data={categories}
       renderItem={renderCategoryItem}
       keyExtractor={(item) => item.id}
+      alignItems="center"
     />
   );
 };
@@ -47,7 +49,7 @@ const styles = StyleSheet.create({
   categoryContainer: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     width: "100%",
   },
 });

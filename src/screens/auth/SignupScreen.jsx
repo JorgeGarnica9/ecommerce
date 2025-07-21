@@ -18,30 +18,30 @@ const SignupScreen = ({ navigation }) => {
                 <TextInput
                     onChangeText={(text) => setEmail(text)}
                     placeholderTextColor={colors.white}
-                    placeholder="Email"
+                    placeholder="Ingrese su Email"
                     style={styles.textInput}
                 />
                 <TextInput
                     onChangeText={(text) => setPassword(text)}
                     placeholderTextColor={colors.white}
-                    placeholder='Password'
+                    placeholder='Ingrese su password'
                     style={styles.textInput}
                     secureTextEntry
                 />
                 <TextInput
                     onChangeText={(text) => setConfirmPassword(text)}
                     placeholderTextColor={colors.white}
-                    placeholder='Repetir password'
+                    placeholder='Repita su password'
                     style={styles.textInput}
                     secureTextEntry
                 />
             </View>
             <View style={styles.footTextContainer}>
-                <Text style={styles.whiteText}>¿Ya tienes una cuenta?</Text>
+                <Text style={styles.blueText}>¿Ya tienes una cuenta?</Text>
                 <Pressable onPress={() => navigation.navigate('Login')}>
                     <Text style={
                         {
-                            ...styles.whiteText,
+                            ...styles.blueText,
                             ...styles.underLineText
                         }
                     }>
@@ -98,8 +98,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         gap: 8,
     },
-    whiteText: {
-        color: colors.white
+    blueText: {
+        color: colors.blue
     },
     underLineText: {
         textDecorationLine: 'underline',
