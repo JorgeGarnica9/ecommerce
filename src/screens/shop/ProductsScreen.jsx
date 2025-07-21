@@ -14,7 +14,7 @@ const ProductsScreen = ({navigation}) => {
     const [keyword, setKeyword] = useState('');
     const products = useSelector((state) => state.shopReducer.products);
     const category = useSelector((state) => state.shopReducer.categorySelected);
-    const { data: productsFilteredByCategory, isLoading, error } = useGetProductsByCategoryQuery(category);
+    const { data: productsFilteredByCategory, isLoading, error } = useGetProductsByCategoryQuery(category.toLowerCase());
     const dispatch = useDispatch();
     // const productsFilteredByCategory = useSelector((state) => state.shopReducer.productsFilteredByCategory);
 
