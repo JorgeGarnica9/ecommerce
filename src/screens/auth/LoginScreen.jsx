@@ -30,8 +30,7 @@ const LoginScreen = ({ navigation, route }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Mundo Geek</Text>
-            <Text style={styles.subTitle}>Inicia sesión</Text>
+            <Text style={styles.title}>El contenido de esta aplicación es de uso exclusivo para usuarios registrados. Por favor inicia tu sesión o crea tu nuevo perfil de usuario.</Text>
             <View style={styles.inputContainer}>
                 <TextInput
                     onChangeText={(text) => setEmail(text)}
@@ -48,11 +47,11 @@ const LoginScreen = ({ navigation, route }) => {
                 />
             </View>
             <View style={styles.footTextContainer}>
-                <Text style={styles.whiteText}>¿No tienes una cuenta?</Text>
+                <Text style={styles.blueText}>¿No tienes una cuenta?</Text>
                 <Pressable onPress={() => navigation.navigate('Signup')}>
                     <Text style={
                         {
-                            ...styles.whiteText,
+                            ...styles.blueText,
                             ...styles.underLineText
                         }
                     }>
@@ -73,12 +72,14 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: colors.purple
+        backgroundColor: colors.lightGray,
+        padding: 16,
     },
     title: {
-        color: colors.neonGreen,
-        fontFamily: "PressStart2P",
-        fontSize: 24
+        color: colors.blue,
+        fontFamily: "Audiowide",
+        fontSize: 22,
+        textAlign: 'center',
     },
     subTitle: {
         fontFamily: "Montserrat",
@@ -106,8 +107,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         gap: 8,
     },
-    whiteText: {
-        color: colors.white
+    blueText: {
+        color: colors.blue
     },
     underLineText: {
         textDecorationLine: 'underline',
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
     btn: {
         padding: 16,
         paddingHorizontal: 32,
-        backgroundColor: colors.black,
+        backgroundColor: colors.darkGray,
         borderRadius: 16,
         marginTop: 32
     },
