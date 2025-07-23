@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { CartStackNavigator, OrdersStackNavigator, ShopStackNavigator } from '../index';
+import { CartStackNavigator, OrdersStackNavigator, ShopStackNavigator, ProfileStackNavigator } from '../index';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StyleSheet } from 'react-native';
 
@@ -34,6 +34,14 @@ export default function TabNavigator() {
             options={{
                 tabBarIcon: ({ color, size }) => (
                     <Ionicons name="list" size={size} color={color} />
+                )
+            }} />
+             <Tab.Screen 
+            name='Profile' 
+            component={ProfileStackNavigator} 
+            options={{
+                tabBarIcon: ({ color, size }) => (
+                    <Ionicons name="person-circle-outline" size={size} color={color} />
                 )
             }} />
         </Tab.Navigator>
