@@ -1,33 +1,28 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  Image,
-  Pressable,
-} from "react-native";
+import { StyleSheet, View, FlatList, Image, Pressable } from "react-native";
 import FlatCard from "../../components/FlatCard";
-import TextKarlaRegular from "../../components/TextKarlaRegular";
-import {useSelector, useDispatch} from "react-redux";
-import { setCategorySelected, filterProducts } from "../../features/shop/shopSlice";
+import TextNova from "../../components/TextNova";
+import { useDispatch } from "react-redux";
+import {
+  setCategorySelected,
+  filterProducts,
+} from "../../features/shop/shopSlice";
 import { useGetCategoriesQuery } from "../../services/shop/shopApi";
 
 const CategoriesScreen = ({ navigation }) => {
   const dispatch = useDispatch();
-  // const categories = useSelector((state) => state.shopReducer.categories);
-  const { data:categories, isLoading, error } = useGetCategoriesQuery();
-
+  const { data: categories, isLoading, error } = useGetCategoriesQuery();
 
   const renderCategoryItem = ({ item }) => (
-    <Pressable onPress={() => {
-      dispatch(setCategorySelected(item.title));
-      dispatch(filterProducts(item.title));
-      navigation.navigate("Productos");
-      
-    }}>
+    <Pressable
+      onPress={() => {
+        dispatch(setCategorySelected(item.title));
+        dispatch(filterProducts(item.title));
+        navigation.navigate("Productos");
+      }}
+    >
       <FlatCard>
         <View style={styles.categoryContainer}>
-          <TextKarlaRegular>{item.title}</TextKarlaRegular>
+          <TextNova>{item.title}</TextNova>
           <Image width={80} height={40} source={{ uri: item.image }} />
         </View>
       </FlatCard>

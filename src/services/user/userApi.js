@@ -3,22 +3,23 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const baseUrl = process.env.EXPO_PUBLIC_BASE_RTDB_URL;
 
 export const userApi = createApi({
-    reducerPath: "userApi",
-    baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
-    endpoints: (builder) => ({
-        getProfilePicture: builder.query({
-            query: (localId) => `profilePictures/${localId}.json`,
-        }),
-        putProfilePicture: builder.mutation({
-            query: ({ localId, image }) => ({
-                url: `profilePictures/${localId}.json`,
-                method: "PUT",
-                body: {
-                    image: image
-                }
-            })
-        })
-    })
+  reducerPath: "userApi",
+  baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
+  endpoints: (builder) => ({
+    getProfilePicture: builder.query({
+      query: (localId) => `profilePictures/${localId}.json`,
+    }),
+    putProfilePicture: builder.mutation({
+      query: ({ localId, image }) => ({
+        url: `profilePictures/${localId}.json`,
+        method: "PUT",
+        body: {
+          image: image,
+        },
+      }),
+    }),
+  }),
 });
 
-export const { useGetProfilePictureQuery, usePutProfilePictureMutation } = userApi;
+export const { useGetProfilePictureQuery, usePutProfilePictureMutation } =
+  userApi;

@@ -6,7 +6,6 @@ const Stack = createNativeStackNavigator();
 
 export default function ShopStackNavigator() {
   const category = useSelector((state) => state.shopReducer.categorySelected);
-  // probar a ver cómo cambiar los nombres de las vistas dependiendo lo seleccionado
 
   return (
       <Stack.Navigator

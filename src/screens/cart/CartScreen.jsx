@@ -1,15 +1,21 @@
-import { FlatList, StyleSheet, Text, View, Image, Pressable } from 'react-native'
-import { colors } from '../../global/colors'
-import FlatCard from '../../components/FlatCard'
-import Icon from 'react-native-vector-icons/MaterialIcons'
-import { useSelector, useDispatch } from 'react-redux'
-import { removeItems } from '../../features/cart/cartSlice'
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Pressable,
+} from "react-native";
+import { colors } from "../../global/colors";
+import FlatCard from "../../components/FlatCard";
+import Icon from "react-native-vector-icons/MaterialIcons";
+import { useSelector, useDispatch } from "react-redux";
+import { removeItems } from "../../features/cart/cartSlice";
 
 const CartScreen = () => {
-
-  const cartItems = useSelector(state => state.cartReducer.cartItems)
-  const total = useSelector(state => state.cartReducer.total)
-  const dispatch = useDispatch()
+  const cartItems = useSelector((state) => state.cartReducer.cartItems);
+  const total = useSelector((state) => state.cartReducer.total);
+  const dispatch = useDispatch();
 
   const FooterComponent = () => (
     <View style={styles.footerContainer}>
@@ -18,7 +24,7 @@ const CartScreen = () => {
         <Text style={styles.confirmButtonText}>Confirmar</Text>
       </Pressable>
     </View>
-  )
+  );
 
   const renderCartItem = ({ item }) => (
     <FlatCard style={styles.cartContainer}>
@@ -26,7 +32,7 @@ const CartScreen = () => {
         <Image
           source={{ uri: item.mainImage }}
           style={styles.cartImage}
-          resizeMode='cover'
+          resizeMode="cover"
         />
       </View>
       <View style={styles.cartDescription}>
@@ -36,54 +42,61 @@ const CartScreen = () => {
         <Text stlyle={styles.quantity}>Cantidad: {item.quantity}</Text>
         <Text style={styles.total}>Total: $ {item.quantity * item.price}</Text>
         <Pressable onPress={() => dispatch(removeItems(item.id))}>
-          <Icon name="delete" size={24} color="#FC7A5E" style={styles.trashIcon} />
+          <Icon
+            name="delete"
+            size={24}
+            color={colors.red}
+            style={styles.trashIcon}
+          />
         </Pressable>
       </View>
     </FlatCard>
-  )
+  );
 
   return (
     <>
-      {
-        cartItems.length>0
-          ?
-          <FlatList
-            data={cartItems}
-            keyExtractor={item => item.id}
-            renderItem={renderCartItem}
-            ListHeaderComponent={<Text style={styles.cartScreenTitle}>Productos agregados:</Text>}
-            ListFooterComponent={<FooterComponent />}
-          />
-
-          :
-            <Text style={styles.text}>Tu carrito de compras se encuentra vacío. </Text>
-      }
+      {cartItems.length > 0 ? (
+        <FlatList
+          data={cartItems}
+          keyExtractor={(item) => item.id}
+          renderItem={renderCartItem}
+          ListHeaderComponent={
+            <Text style={styles.cartScreenTitle}>Productos agregados:</Text>
+          }
+          ListFooterComponent={<FooterComponent />}
+        />
+      ) : (
+        <Text style={styles.text}>
+          Tu carrito de compras se encuentra vacío.{" "}
+        </Text>
+      )}
     </>
-  )
-}
+  );
+};
 
-export default CartScreen
+export default CartScreen;
 
 const styles = StyleSheet.create({
   cartContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     padding: 20,
     justifyContent: "flex-start",
     margin: 16,
     alignItems: "center",
-    gap: 10
+    gap: 10,
+    width: '90%'
   },
   cartImage: {
     width: 80,
-    height: 80
+    height: 80,
   },
   cartDescription: {
-    width: '80%',
+    width: "80%",
     padding: 20,
   },
   title: {
     fontSize: 16,
-    fontWeight: '700'
+    fontWeight: "700",
   },
   description: {
     marginBottom: 16,
@@ -91,45 +104,45 @@ const styles = StyleSheet.create({
   total: {
     marginTop: 16,
     fontSize: 16,
-    fontWeight: '700'
+    fontWeight: "700",
   },
   trashIcon: {
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end",
     marginRight: 16,
   },
   footerContainer: {
     padding: 32,
     gap: 8,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center",
   },
   footerTotal: {
     fontSize: 16,
-    fontWeight: '700'
+    fontWeight: "700",
   },
   confirmButton: {
     padding: 8,
     paddingHorizontal: 16,
-    backgroundColor: colors.purple,
+    backgroundColor: colors.blue,
     borderRadius: 16,
     marginBottom: 24,
   },
   confirmButtonText: {
     color: colors.white,
     fontSize: 16,
-    fontWeight: '700'
-  }, cartScreenTitle: {
+    fontWeight: "700",
+  },
+  cartScreenTitle: {
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: "700",
     textAlign: "center",
-    paddingVertical: 8
+    paddingVertical: 8,
   },
   text: {
-        color: colors.blue,
-        fontFamily: "Audiowide",
-        fontSize: 22,
-        textAlign: 'center',
-        marginTop: 32,
-    },
-
-})
+    color: colors.blue,
+    fontFamily: "Audiowide",
+    fontSize: 22,
+    textAlign: "center",
+    marginTop: 32,
+  },
+});
