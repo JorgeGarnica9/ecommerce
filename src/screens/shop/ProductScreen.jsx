@@ -56,11 +56,11 @@ const ProductScreen = ({ route }) => {
     dispatch(addItems({ product: product, quantity: 1 }));
     
     Toast.show({
-      type: 'success',
-      text1: 'Producto agregado',
-      text2: product.title, // o cualquier propiedad útil
-      position: 'bottom', // o 'top'
-      visibilityTime: 2000, // 2 segundos
+      type: 'customToast',
+      text1: 'Producto agregado al carrito',
+      text2: product.title, 
+      position: 'top', 
+      visibilityTime: 2000,
     });
   }}
       >

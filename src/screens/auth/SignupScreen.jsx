@@ -7,8 +7,10 @@ import {
   Dimensions,
 } from "react-native";
 import { colors } from "../../global/colors";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextNova from "../../components/TextNova";
+import { useSignupMutation } from "../../services/auth/authApi";
+import Toast from "react-native-toast-message";
 
 const textInputWidth = Dimensions.get("window").width * 0.7;
 
@@ -17,6 +19,32 @@ const SignupScreen = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const [triggerSignup, result] = useSignupMutation();
+
+  const onSubmit = () => {
+    triggerSignup({email,password})
+  }
+
+  useEffect(() => {
+    if (result.status === "fulfilled") {
+      navigation.navigate("Login");
+      Toast.show({
+            type: 'customToast',
+            text1: 'Usuario creado con éxito',
+            text2: 'Inicia sesión para continuar', 
+            position: 'top', 
+            visibilityTime: 2000,
+          });
+    }else if (result.status === "rejected") {
+      Toast.show({
+            type: 'customToast',
+            text1: 'No se ha podido crear el usuario',
+            text2: 'Revisa los datos ingresados', 
+            position: 'top', 
+            visibilityTime: 2000,
+          });
+    }
+  }, [result, navigation]);
   return (
     <View style={styles.gradient}>
       <TextNova style={styles.title}>
@@ -60,7 +88,7 @@ const SignupScreen = ({ navigation }) => {
         </Pressable>
       </View>
 
-      <Pressable style={styles.btn} onPress={null}>
+      <Pressable style={styles.btn} onPress={onSubmit}>
         <Text style={styles.btnText}>Crear cuenta</Text>
       </Pressable>
     </View>

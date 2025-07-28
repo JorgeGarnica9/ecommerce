@@ -9,5 +9,7 @@ export const colors = {
     "mediumBlue":"#6096BA",
     "blue":"#274C77",
     "white":"#E7ECEF",
+    "neonGreen":"#39FF14",
+    "neonRed":"#FF073A",
     
 };

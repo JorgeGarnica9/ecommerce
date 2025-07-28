@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: colors.blue,
-    fontSize: 30,
+    fontSize: 24,
     textAlign: "center",
     marginTop: 40,
   },

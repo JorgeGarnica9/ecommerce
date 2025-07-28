@@ -8,8 +8,13 @@ import { Provider } from "react-redux";
 import store from "./src/store/index";
 import MainNavigator from "./src/navigation/main/MainNavigator";
 import Toast from "react-native-toast-message";
+import { MyCustomToast } from "./src/components/MyCustomToast";
 
 SplashScreen.preventAutoHideAsync();
+
+const toastConfig = {
+  customToast: ({ ...props }) => <MyCustomToast {...props} />,
+};
 
 export default function App() {
   const [loaded, error] = useFonts({
@@ -33,7 +38,7 @@ export default function App() {
         <Header title="FREAKYSTORE" subtitle="by JORGE GARNICA" />
         <StatusBar style="light" />
         <MainNavigator />
-        <Toast />
+        <Toast config={toastConfig}/>
       </Provider>
     </>
   );
