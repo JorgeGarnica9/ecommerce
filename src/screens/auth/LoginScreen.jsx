@@ -89,7 +89,6 @@ const styles = StyleSheet.create({
   },
   title: {
     color: colors.blue,
-    fontFamily: "Audiowide",
     fontSize: 22,
     textAlign: "center",
   },

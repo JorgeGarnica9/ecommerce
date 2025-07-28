@@ -7,6 +7,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { Provider } from "react-redux";
 import store from "./src/store/index";
 import MainNavigator from "./src/navigation/main/MainNavigator";
+import Toast from "react-native-toast-message";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -32,6 +33,7 @@ export default function App() {
         <Header title="FREAKYSTORE" subtitle="by JORGE GARNICA" />
         <StatusBar style="light" />
         <MainNavigator />
+        <Toast />
       </Provider>
     </>
   );

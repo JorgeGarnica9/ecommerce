@@ -10,6 +10,7 @@ import {
 import { colors } from "../../global/colors";
 import { useDispatch } from "react-redux";
 import { addItems } from "../../features/cart/cartSlice";
+import Toast from "react-native-toast-message";
 
 const ProductScreen = ({ route }) => {
   const { product } = route.params;
@@ -51,7 +52,17 @@ const ProductScreen = ({ route }) => {
           { opacity: pressed ? 0.95 : 1 },
           styles.addToCartButton,
         ]}
-        onPress={() => dispatch(addItems({ product: product, quantity: 1 }))}
+        onPress={() => {
+    dispatch(addItems({ product: product, quantity: 1 }));
+    
+    Toast.show({
+      type: 'success',
+      text1: 'Producto agregado',
+      text2: product.title, // o cualquier propiedad útil
+      position: 'bottom', // o 'top'
+      visibilityTime: 2000, // 2 segundos
+    });
+  }}
       >
         <Text style={styles.textAddToCart}>Agregar al carrito</Text>
       </Pressable>

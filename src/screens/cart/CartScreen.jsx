@@ -11,6 +11,7 @@ import FlatCard from "../../components/FlatCard";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { useSelector, useDispatch } from "react-redux";
 import { removeItems } from "../../features/cart/cartSlice";
+import TextNova from "../../components/TextNova";
 
 const CartScreen = () => {
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
@@ -66,9 +67,11 @@ const CartScreen = () => {
           ListFooterComponent={<FooterComponent />}
         />
       ) : (
-        <Text style={styles.text}>
-          Tu carrito de compras se encuentra vacío.{" "}
-        </Text>
+        <View style={styles.emptyCartContainer}>
+          <TextNova style={{...styles.text}}>
+            Tu carrito de compras se encuentra vacío. Intenta agregar algunos productos!
+          </TextNova>
+        </View>
       )}
     </>
   );
@@ -140,9 +143,15 @@ const styles = StyleSheet.create({
   },
   text: {
     color: colors.blue,
-    fontFamily: "Audiowide",
-    fontSize: 22,
+    fontSize: 30,
     textAlign: "center",
-    marginTop: 32,
+    marginTop: 40,
   },
+  emptyCartContainer: {
+    flex: 1,
+    justifyContent: "flex-start",
+    alignItems: "center",
+    backgroundColor: colors.lightGray,
+    padding: 16,
+  },  
 });
