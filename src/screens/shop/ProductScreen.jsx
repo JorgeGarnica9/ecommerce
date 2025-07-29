@@ -11,12 +11,16 @@ import { colors } from "../../global/colors";
 import { useDispatch } from "react-redux";
 import { addItems } from "../../features/cart/cartSlice";
 import Toast from "react-native-toast-message";
+import Counter from "../../components/Counter";
+import { useState } from "react";
 
 const ProductScreen = ({ route }) => {
   const { product } = route.params;
   const { width } = useWindowDimensions();
+  const [quantity, setQuantity] = useState(1);
 
   const dispatch = useDispatch();
+
   return (
     <ScrollView style={styles.productContainer}>
       <Text style={styles.textBrand}>{product.brand}</Text>
@@ -47,14 +51,15 @@ const ProductScreen = ({ route }) => {
       </View>
       {product.stock <= 0 && <Text style={styles.noStockText}>Sin Stock</Text>}
       <Text style={styles.price}>Precio: ${product.price}</Text>
+      <Counter count={quantity} setCount={setQuantity}/>
       <Pressable
         style={({ pressed }) => [
           { opacity: pressed ? 0.95 : 1 },
           styles.addToCartButton,
         ]}
         onPress={() => {
-    dispatch(addItems({ product: product, quantity: 1 }));
-    
+    dispatch(addItems({ product: product, quantity: quantity }));
+
     Toast.show({
       type: 'customToast',
       text1: 'Producto agregado al carrito',

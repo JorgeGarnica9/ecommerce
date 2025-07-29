@@ -40,7 +40,7 @@ const CartScreen = () => {
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.description}>{item.shortDescription}</Text>
         <Text style={styles.price}>Precio unitario: $ {item.price}</Text>
-        <Text stlyle={styles.quantity}>Cantidad: {item.quantity}</Text>
+        <Text style={styles.quantity}>Cantidad: {item.quantity}</Text>
         <Text style={styles.total}>Total: $ {item.quantity * item.price}</Text>
         <Pressable onPress={() => dispatch(removeItems(item.id))}>
           <Icon
