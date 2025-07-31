@@ -21,5 +21,4 @@ export const userApi = createApi({
   }),
 });
 
-export const { useGetProfilePictureQuery, usePutProfilePictureMutation } =
-  userApi;
+export const { useGetProfilePictureQuery, usePutProfilePictureMutation } = userApi;

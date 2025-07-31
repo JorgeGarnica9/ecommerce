@@ -16,6 +16,7 @@ import TextNova from "../../components/TextNova";
 const CartScreen = () => {
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
   const total = useSelector((state) => state.cartReducer.total);
+
   const dispatch = useDispatch();
 
   const FooterComponent = () => (
@@ -68,8 +69,9 @@ const CartScreen = () => {
         />
       ) : (
         <View style={styles.emptyCartContainer}>
-          <TextNova style={{...styles.text}}>
-            Tu carrito de compras se encuentra vacío. Intenta agregar algunos productos!
+          <TextNova style={{ ...styles.text }}>
+            Tu carrito de compras se encuentra vacío. Intenta agregar algunos
+            productos!
           </TextNova>
         </View>
       )}
@@ -87,7 +89,7 @@ const styles = StyleSheet.create({
     margin: 16,
     alignItems: "center",
     gap: 10,
-    width: '90%'
+    width: "90%",
   },
   cartImage: {
     width: 80,
@@ -151,7 +153,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-start",
     alignItems: "center",
-    backgroundColor: colors.lightGray,
+    backgroundColor: colors.lightGrey,
     padding: 16,
-  },  
+  },
 });

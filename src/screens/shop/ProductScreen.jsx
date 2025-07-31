@@ -51,23 +51,23 @@ const ProductScreen = ({ route }) => {
       </View>
       {product.stock <= 0 && <Text style={styles.noStockText}>Sin Stock</Text>}
       <Text style={styles.price}>Precio: ${product.price}</Text>
-      <Counter count={quantity} setCount={setQuantity}/>
+      <Counter count={quantity} setCount={setQuantity} />
       <Pressable
         style={({ pressed }) => [
           { opacity: pressed ? 0.95 : 1 },
           styles.addToCartButton,
         ]}
         onPress={() => {
-    dispatch(addItems({ product: product, quantity: quantity }));
+          dispatch(addItems({ product: product, quantity: quantity }));
 
-    Toast.show({
-      type: 'customToast',
-      text1: 'Producto agregado al carrito',
-      text2: product.title, 
-      position: 'top', 
-      visibilityTime: 2000,
-    });
-  }}
+          Toast.show({
+            type: "customToast",
+            text1: "Producto agregado al carrito",
+            text2: product.title,
+            position: "top",
+            visibilityTime: 2000,
+          });
+        }}
       >
         <Text style={styles.textAddToCart}>Agregar al carrito</Text>
       </Pressable>
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     marginVertical: 16,
   },
   textBrand: {
-    color: colors.darkGray,
+    color: colors.darkGrey,
   },
   textTitle: {
     fontSize: 24,
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     marginVertical: 16,
   },
   textAddToCart: {
-    color: colors.lightGray,
+    color: colors.lightGrey,
     fontSize: 24,
     textAlign: "center",
   },

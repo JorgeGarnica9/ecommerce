@@ -1,12 +1,13 @@
-import { StyleSheet, Text, View } from "react-native";
-import  TextNova  from "../../components/TextNova";
+import { StyleSheet, View } from "react-native";
+import TextNova from "../../components/TextNova";
 import { colors } from "../../global/colors";
 
 const OrdersScreen = () => {
   return (
     <View style={styles.emptyOrderContainer}>
       <TextNova style={{ ...styles.text }}>
-        Aún no se ha generado ninguna orden de compra. Agrega productos a tu carrito y realiza tu compra.
+        Aún no se ha generado ninguna orden de compra. Agrega productos a tu
+        carrito y realiza tu compra.
       </TextNova>
     </View>
   );
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-start",
     alignItems: "center",
-    backgroundColor: colors.lightGray,
+    backgroundColor: colors.lightGrey,
     padding: 16,
   },
   text: {

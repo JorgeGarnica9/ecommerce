@@ -47,12 +47,12 @@ const LoginScreen = ({ navigation }) => {
         }
       } else if (result.status === "rejected") {
         Toast.show({
-              type: 'customToast',
-              text1: 'Error al iniciar sesión, intenta nuevamente',
-              text2: 'Revisa tus datos', 
-              position: 'top', 
-              visibilityTime: 2000,
-            });
+          type: "customToast",
+          text1: "Error al iniciar sesión, intenta nuevamente",
+          text2: "Revisa tus datos",
+          position: "top",
+          visibilityTime: 2000,
+        });
       }
     };
 
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.lightGray,
+    backgroundColor: colors.lightGrey,
     padding: 16,
   },
   title: {
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     padding: 8,
     paddingLeft: 16,
     borderRadius: 16,
-    backgroundColor: colors.darkGray,
+    backgroundColor: colors.darkGrey,
     width: textInputWidth,
     color: colors.white,
   },
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
   btn: {
     padding: 16,
     paddingHorizontal: 32,
-    backgroundColor: colors.darkGray,
+    backgroundColor: colors.darkGrey,
     borderRadius: 16,
     marginTop: 32,
   },

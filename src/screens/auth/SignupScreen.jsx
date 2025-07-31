@@ -22,27 +22,27 @@ const SignupScreen = ({ navigation }) => {
   const [triggerSignup, result] = useSignupMutation();
 
   const onSubmit = () => {
-    triggerSignup({email,password})
-  }
+    triggerSignup({ email, password });
+  };
 
   useEffect(() => {
     if (result.status === "fulfilled") {
       navigation.navigate("Login");
       Toast.show({
-            type: 'customToast',
-            text1: 'Usuario creado con éxito',
-            text2: 'Inicia sesión para continuar', 
-            position: 'top', 
-            visibilityTime: 2000,
-          });
-    }else if (result.status === "rejected") {
+        type: "customToast",
+        text1: "Usuario creado con éxito",
+        text2: "Inicia sesión para continuar",
+        position: "top",
+        visibilityTime: 2000,
+      });
+    } else if (result.status === "rejected") {
       Toast.show({
-            type: 'customToast',
-            text1: 'No se ha podido crear el usuario',
-            text2: 'Revisa los datos ingresados', 
-            position: 'top', 
-            visibilityTime: 2000,
-          });
+        type: "customToast",
+        text1: "No se ha podido crear el usuario",
+        text2: "Revisa los datos ingresados",
+        position: "top",
+        visibilityTime: 2000,
+      });
     }
   }, [result, navigation]);
   return (
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.lightGray,
+    backgroundColor: colors.lightGrey,
     padding: 16,
   },
   title: {
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     padding: 8,
     paddingLeft: 16,
     borderRadius: 16,
-    backgroundColor: colors.darkGray,
+    backgroundColor: colors.darkGrey,
     width: textInputWidth,
     color: colors.white,
   },
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
   btn: {
     padding: 16,
     paddingHorizontal: 32,
-    backgroundColor: colors.darkGray,
+    backgroundColor: colors.darkGrey,
     borderRadius: 16,
     marginTop: 32,
   },
@@ -152,10 +152,4 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "700",
   },
-//   error: {
-//     padding: 16,
-//     backgroundColor: colors.red,
-//     borderRadius: 8,
-//     color: colors.white,
-//   },
 });

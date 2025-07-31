@@ -100,10 +100,12 @@ const ProfileScreen = () => {
         </Pressable>
       </View>
       <Text style={styles.profileData}>Email: {user}</Text>
-      <Pressable onPress={() => {
-        clearSession();
-        dispatch(clearUser());
-      }}>
+      <Pressable
+        onPress={() => {
+          clearSession();
+          dispatch(clearUser());
+        }}
+      >
         <TextNova>Cerrar sesión</TextNova>
       </Pressable>
       <View style={styles.titleContainer}>
