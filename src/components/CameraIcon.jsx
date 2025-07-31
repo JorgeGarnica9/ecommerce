@@ -16,11 +16,11 @@ const styles = StyleSheet.create({
   iconContainer: {
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.darkGray,
+    backgroundColor: colors.darkGrey,
     width: 48,
     height: 48,
     borderRadius: 32,
-    borderColor: colors.lightGray,
+    borderColor: colors.lightGrey,
     borderWidth: 2,
   },
 });

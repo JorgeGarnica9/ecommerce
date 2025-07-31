@@ -1,29 +1,27 @@
 [
-    {
-        "id": 1,
-        "title": "Consolas",
-        "image": "https://i.postimg.cc/59pwKkjL/consolas-cat-List.png"
-    },
-    {
-        "id": 2,
-        "title": "Accesorios",
-        "image": "https://i.postimg.cc/ZKcDcczM/accesorios-cat-List.webp"
-    },
-    {
-        "id": 3,
-        "title": "Comics",
-        "image": "https://i.postimg.cc/hGK6n5bg/mangas-cat-List.jpg"
-    },
-    {
-        "id": 4,
-        "title": "Juegos",
-        "image": "https://i.postimg.cc/brFpSjgQ/juegos-cat-List.jpg"
-    },
-        {
-        "id": 5,
-        "title": "Figuras",
-        "image": "https://i.postimg.cc/524S2dGP/figuras-cat-List.jpg"
-    }
-
-
+  {
+    "id": 1,
+    "title": "Consolas",
+    "image": "https://i.postimg.cc/59pwKkjL/consolas-cat-List.png"
+  },
+  {
+    "id": 2,
+    "title": "Accesorios",
+    "image": "https://i.postimg.cc/ZKcDcczM/accesorios-cat-List.webp"
+  },
+  {
+    "id": 3,
+    "title": "Comics",
+    "image": "https://i.postimg.cc/hGK6n5bg/mangas-cat-List.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Juegos",
+    "image": "https://i.postimg.cc/brFpSjgQ/juegos-cat-List.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Figuras",
+    "image": "https://i.postimg.cc/524S2dGP/figuras-cat-List.jpg"
+  }
 ]

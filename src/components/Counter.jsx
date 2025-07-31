@@ -1,10 +1,8 @@
 import { View, Text, Pressable, StyleSheet } from "react-native";
-import { useState } from "react";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { colors } from "../global/colors";
 
-function Counter({count, setCount}) {
-
+function Counter({ count, setCount }) {
   const sum = () => {
     setCount(count + 1);
   };
@@ -24,7 +22,7 @@ function Counter({count, setCount}) {
           name="remove-circle-outline"
           size={34}
           color={colors.neonRed}
-           backgroundColor={colors.darkGray}
+          backgroundColor={colors.darkGray}
           borderRadius={16}
           onPress={rest}
         />
@@ -42,7 +40,7 @@ function Counter({count, setCount}) {
       </Pressable>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -54,7 +52,7 @@ const styles = StyleSheet.create({
   texto: {
     fontWeight: "bold",
     fontSize: 24,
-    borderColor: colors.darkGray,
+    borderColor: colors.darkGrey,
     borderWidth: 2,
     padding: 6,
     borderRadius: 16,

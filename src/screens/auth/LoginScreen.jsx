@@ -14,13 +14,14 @@ import { useLoginMutation } from "../../services/auth/authApi";
 import { setUser } from "../../features/user/userSlice";
 import { useDispatch } from "react-redux";
 import { saveSession, clearSession } from "../../db";
+import Toast from "react-native-toast-message";
 
 const textInputWidth = Dimensions.get("window").width * 0.7;
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-    const [persistSession, setPersistSession] = useState(false);
+  const [persistSession, setPersistSession] = useState(false);
 
   const [triggerLogin, result] = useLoginMutation();
 
@@ -30,28 +31,33 @@ const LoginScreen = ({ navigation }) => {
     triggerLogin({ email, password });
   };
 
-   useEffect(() => {
-        const saveLoginSession = async () => {
-            if (result.status === "fulfilled") {
-                try {
-                    const { localId, email } = result.data;
+  useEffect(() => {
+    const saveLoginSession = async () => {
+      if (result.status === "fulfilled") {
+        try {
+          const { localId, email } = result.data;
+          if (persistSession) {
+            await saveSession(localId, email);
+          } else {
+            await clearSession();
+          }
+          dispatch(setUser({ localId, email }));
+        } catch (error) {
+          console.log("Error al guardar sesión:", error);
+        }
+      } else if (result.status === "rejected") {
+        Toast.show({
+              type: 'customToast',
+              text1: 'Error al iniciar sesión, intenta nuevamente',
+              text2: 'Revisa tus datos', 
+              position: 'top', 
+              visibilityTime: 2000,
+            });
+      }
+    };
 
-                    if (persistSession) {
-                        await saveSession(localId, email);
-                    } else {
-                        await clearSession();
-                    }
-                    dispatch(setUser({ localId, email }));
-                } catch (error) {
-                    console.log("Error al guardar sesión:", error);
-                }
-            } else if (result.status === "rejected") {
-                console.log("Hubo un error al iniciar sesión");
-            }
-        };
-
-        saveLoginSession();
-    }, [result]);
+    saveLoginSession();
+  }, [result]);
 
   return (
     <View style={styles.container}>
@@ -93,14 +99,16 @@ const LoginScreen = ({ navigation }) => {
         <Text style={styles.btnText}>Iniciar sesión</Text>
       </Pressable>
       <View style={styles.rememberMe}>
-                <Text style={{ color: colors.darkGray }}>¿Mantener sesión iniciada?</Text>
-                <Switch
-                    onValueChange={() => setPersistSession(!persistSession)}
-                    value={persistSession}
-                    trackColor={{ false: '#767577', true: '#81b0ff' }}
-                    thumbColor={persistSession ? '#f5dd4b' : '#f4f3f4'}
-                />
-            </View>
+        <Text style={{ color: colors.darkGray }}>
+          ¿Mantener sesión iniciada?
+        </Text>
+        <Switch
+          onValueChange={() => setPersistSession(!persistSession)}
+          value={persistSession}
+          trackColor={{ false: "#767577", true: "#81b0ff" }}
+          thumbColor={persistSession ? "#f5dd4b" : "#f4f3f4"}
+        />
+      </View>
     </View>
   );
 };
@@ -162,9 +170,9 @@ const styles = StyleSheet.create({
     fontWeight: "700",
   },
   rememberMe: {
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: 8
-    },
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 8,
+  },
 });

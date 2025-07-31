@@ -12,7 +12,7 @@ export const MyCustomToast = ({ text1, text2, ...rest }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.darkGray,
+    backgroundColor: colors.darkGrey,
     padding: 15,
     borderRadius: 20,
     width: "90%",

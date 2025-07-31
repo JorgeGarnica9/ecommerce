@@ -11,8 +11,8 @@ export default function ProfileStackNavigator() {
       screenOptions={{
         headerShown: true,
         headerTitleAlign: "center",
-        headerStyle: { backgroundColor: colors.lightGray },
-        headerTintColor: colors.darkGray,
+        headerStyle: { backgroundColor: colors.lightGrey },
+        headerTintColor: colors.darkGrey,
         headerTitleStyle: { fontWeight: "bold" },
       }}
     >
