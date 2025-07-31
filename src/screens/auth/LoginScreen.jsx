@@ -5,6 +5,7 @@ import {
   TextInput,
   Pressable,
   Dimensions,
+  Switch,
 } from "react-native";
 import { colors } from "../../global/colors";
 import TextNova from "../../components/TextNova";
@@ -12,12 +13,15 @@ import { useEffect, useState } from "react";
 import { useLoginMutation } from "../../services/auth/authApi";
 import { setUser } from "../../features/user/userSlice";
 import { useDispatch } from "react-redux";
+import { saveSession, clearSession } from "../../db";
 
 const textInputWidth = Dimensions.get("window").width * 0.7;
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+    const [persistSession, setPersistSession] = useState(false);
+
   const [triggerLogin, result] = useLoginMutation();
 
   const dispatch = useDispatch();
@@ -26,13 +30,28 @@ const LoginScreen = ({ navigation }) => {
     triggerLogin({ email, password });
   };
 
-  useEffect(() => {
-    if (result.status === "fulfilled") {
-      dispatch(
-        setUser({ email: result.data.email, localId: result.data.localId })
-      );
-    }
-  }, [result]);
+   useEffect(() => {
+        const saveLoginSession = async () => {
+            if (result.status === "fulfilled") {
+                try {
+                    const { localId, email } = result.data;
+
+                    if (persistSession) {
+                        await saveSession(localId, email);
+                    } else {
+                        await clearSession();
+                    }
+                    dispatch(setUser({ localId, email }));
+                } catch (error) {
+                    console.log("Error al guardar sesión:", error);
+                }
+            } else if (result.status === "rejected") {
+                console.log("Hubo un error al iniciar sesión");
+            }
+        };
+
+        saveLoginSession();
+    }, [result]);
 
   return (
     <View style={styles.container}>
@@ -73,6 +92,15 @@ const LoginScreen = ({ navigation }) => {
       <Pressable style={styles.btn} onPress={onsubmit}>
         <Text style={styles.btnText}>Iniciar sesión</Text>
       </Pressable>
+      <View style={styles.rememberMe}>
+                <Text style={{ color: colors.darkGray }}>¿Mantener sesión iniciada?</Text>
+                <Switch
+                    onValueChange={() => setPersistSession(!persistSession)}
+                    value={persistSession}
+                    trackColor={{ false: '#767577', true: '#81b0ff' }}
+                    thumbColor={persistSession ? '#f5dd4b' : '#f4f3f4'}
+                />
+            </View>
     </View>
   );
 };
@@ -133,10 +161,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "700",
   },
-//   error: {
-//     padding: 16,
-//     backgroundColor: colors.red,
-//     borderRadius: 8,
-//     color: colors.white,
-//   },
+  rememberMe: {
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 8
+    },
 });

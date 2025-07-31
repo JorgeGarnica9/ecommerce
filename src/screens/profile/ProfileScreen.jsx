@@ -15,6 +15,9 @@ import { usePutProfilePictureMutation } from "../../services/user/userApi";
 import { setProfilePicture } from "../../features/user/userSlice";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
+import { clearSession } from "../../db";
+import { clearUser } from "../../features/user/userSlice";
+import TextNova from "../../components/TextNova";
 
 const ProfileScreen = () => {
   const user = useSelector((state) => state.userReducer.userEmail);
@@ -97,6 +100,12 @@ const ProfileScreen = () => {
         </Pressable>
       </View>
       <Text style={styles.profileData}>Email: {user}</Text>
+      <Pressable onPress={() => {
+        clearSession();
+        dispatch(clearUser());
+      }}>
+        <TextNova>Cerrar sesión</TextNova>
+      </Pressable>
       <View style={styles.titleContainer}>
         <Text>Mi ubicación:</Text>
       </View>
