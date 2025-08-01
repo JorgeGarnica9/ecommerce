@@ -50,6 +50,7 @@ const LoginScreen = ({ navigation }) => {
           type: "customToast",
           text1: "Error al iniciar sesión, intenta nuevamente",
           text2: "Revisa tus datos",
+          props: {borderColor: colors.neonRed},
           position: "top",
           visibilityTime: 2000,
         });
@@ -105,8 +106,8 @@ const LoginScreen = ({ navigation }) => {
         <Switch
           onValueChange={() => setPersistSession(!persistSession)}
           value={persistSession}
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={persistSession ? "#f5dd4b" : "#f4f3f4"}
+          trackColor={{ false: "#767577", true: colors.lightBlue }}
+          thumbColor={persistSession ? colors.blue : colors.darkGrey}
         />
       </View>
     </View>

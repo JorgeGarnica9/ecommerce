@@ -13,7 +13,9 @@ import { MyCustomToast } from "./src/components/MyCustomToast";
 SplashScreen.preventAutoHideAsync();
 
 const toastConfig = {
-  customToast: ({ ...props }) => <MyCustomToast {...props} />,
+  customToast: ({ text1, text2, props }) => (
+      <MyCustomToast text1={text1} text2={text2} borderColor={props.borderColor} />
+    ),
 };
 
 export default function App() {

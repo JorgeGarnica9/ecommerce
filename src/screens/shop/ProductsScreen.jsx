@@ -32,14 +32,14 @@ const ProductsScreen = ({ navigation }) => {
     <Pressable
       onPress={() => navigation.navigate("Producto", { product: item })}
     >
-      <FlatCard style={{ backgroundColor: colors.lightGray }}>
+      <FlatCard style={{ backgroundColor: colors.lightGrey }}>
         <TextNova>{item.title}</TextNova>
       </FlatCard>
     </Pressable>
   );
 
   return (
-    <View>
+    <View style={styles.productsContainer}>
       <Search keyword={keyword} setKeyword={setKeyword} />
       <FlatList
         data={productsFiltered}
@@ -52,4 +52,10 @@ const ProductsScreen = ({ navigation }) => {
 
 export default ProductsScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  productsContainer: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: colors.darkGrey,
+  },
+});

@@ -12,6 +12,7 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import { useSelector, useDispatch } from "react-redux";
 import { removeItems } from "../../features/cart/cartSlice";
 import TextNova from "../../components/TextNova";
+import Toast from "react-native-toast-message";
 
 const CartScreen = () => {
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
@@ -22,7 +23,19 @@ const CartScreen = () => {
   const FooterComponent = () => (
     <View style={styles.footerContainer}>
       <Text style={styles.footerTotal}>Total: $ {total} </Text>
-      <Pressable style={styles.confirmButton}>
+      <Pressable
+        style={styles.confirmButton}
+        onPress={() => {
+          Toast.show({
+            type: "customToast",
+            text1: "Función no disponible",
+            text2: "Intente en otro momento",
+            props: {borderColor: colors.neonRed},
+            position: "top",
+            visibilityTime: 2000,
+          });
+        }}
+      >
         <Text style={styles.confirmButtonText}>Confirmar</Text>
       </Pressable>
     </View>
@@ -58,6 +71,7 @@ const CartScreen = () => {
   return (
     <>
       {cartItems.length > 0 ? (
+        <View style={styles.cartListContainer}>
         <FlatList
           data={cartItems}
           keyExtractor={(item) => item.id}
@@ -67,6 +81,7 @@ const CartScreen = () => {
           }
           ListFooterComponent={<FooterComponent />}
         />
+        </View>
       ) : (
         <View style={styles.emptyCartContainer}>
           <TextNova style={{ ...styles.text }}>
@@ -90,6 +105,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 10,
     width: "90%",
+  },
+  cartListContainer:{
+    flex: 1,
+    backgroundColor: colors.darkGrey,
+    padding: 16,
   },
   cartImage: {
     width: 80,
@@ -122,8 +142,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   footerTotal: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "700",
+    color: colors.white,
   },
   confirmButton: {
     padding: 8,
@@ -131,6 +152,10 @@ const styles = StyleSheet.create({
     backgroundColor: colors.blue,
     borderRadius: 16,
     marginBottom: 24,
+    borderColor: colors.white, 
+    borderWidth: 2,
+    elevation: 10,
+    shadowColor: colors.white,
   },
   confirmButtonText: {
     color: colors.white,
@@ -142,9 +167,10 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     textAlign: "center",
     paddingVertical: 8,
+    color: colors.white,
   },
   text: {
-    color: colors.blue,
+    color: colors.white,
     fontSize: 24,
     textAlign: "center",
     marginTop: 40,
@@ -153,7 +179,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-start",
     alignItems: "center",
-    backgroundColor: colors.lightGrey,
+    backgroundColor: colors.darkGrey,
     padding: 16,
   },
 });

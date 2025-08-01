@@ -1,9 +1,9 @@
 import { View, Text, StyleSheet } from "react-native";
 import { colors } from "../global/colors";
 
-export const MyCustomToast = ({ text1, text2, ...rest }) => {
+export const MyCustomToast = ({ text1, text2, borderColor=colors.neonGreen, ...rest }) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {borderLeftColor: borderColor}]}>
       <Text style={styles.text1}>{text1}</Text>
       <Text style={styles.text2}>{text2}</Text>
     </View>

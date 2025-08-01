@@ -7,6 +7,7 @@ import {
 } from "../index";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { StyleSheet } from "react-native";
+import { colors } from "../../global/colors";
 
 const Tab = createBottomTabNavigator();
 
@@ -62,7 +63,7 @@ export default function TabNavigator() {
 const styles = StyleSheet.create({
   tabBar: {
     backgroundColor: "black",
-    borderTopWidth: 1,
-    borderTopColor: "#eee",
+    borderTopWidth: 3,
+    borderTopColor: colors.white,
   },
 });

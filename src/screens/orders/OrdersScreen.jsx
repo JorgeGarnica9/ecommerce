@@ -6,8 +6,8 @@ const OrdersScreen = () => {
   return (
     <View style={styles.emptyOrderContainer}>
       <TextNova style={{ ...styles.text }}>
-        Aún no se ha generado ninguna orden de compra. Agrega productos a tu
-        carrito y realiza tu compra.
+        Esta sección se encuentra en desarrollo.
+        {"\n"}Pronto podrás ver tus órdenes aquí.
       </TextNova>
     </View>
   );
@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-start",
     alignItems: "center",
-    backgroundColor: colors.lightGrey,
+    backgroundColor: colors.darkGrey,
     padding: 16,
   },
   text: {
-    color: colors.blue,
+    color: colors.white,
     fontSize: 24,
     textAlign: "center",
     marginTop: 40,

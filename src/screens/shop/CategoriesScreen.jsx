@@ -7,6 +7,7 @@ import {
   filterProducts,
 } from "../../features/shop/shopSlice";
 import { useGetCategoriesQuery } from "../../services/shop/shopApi";
+import { colors } from "../../global/colors";
 
 const CategoriesScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -29,12 +30,14 @@ const CategoriesScreen = ({ navigation }) => {
     </Pressable>
   );
   return (
+    <View style={styles.categoriesContainer}>
     <FlatList
       data={categories}
       renderItem={renderCategoryItem}
       keyExtractor={(item) => item.id}
       alignItems="center"
     />
+    </View>
   );
 };
 
@@ -47,4 +50,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     width: "100%",
   },
+  categoriesContainer: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: colors.darkGrey,
+  },
+
 });

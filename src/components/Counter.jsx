@@ -22,7 +22,7 @@ function Counter({ count, setCount }) {
           name="remove-circle-outline"
           size={34}
           color={colors.neonRed}
-          backgroundColor={colors.darkGray}
+          backgroundColor={colors.black}
           borderRadius={16}
           onPress={rest}
         />
@@ -33,7 +33,7 @@ function Counter({ count, setCount }) {
           name="add-circle-outline"
           size={34}
           color={colors.neonGreen}
-          backgroundColor={colors.darkGray}
+          backgroundColor={colors.black}
           borderRadius={16}
           onPress={sum}
         />
@@ -52,10 +52,11 @@ const styles = StyleSheet.create({
   texto: {
     fontWeight: "bold",
     fontSize: 24,
-    borderColor: colors.darkGrey,
-    borderWidth: 2,
+    borderColor: colors.lightGrey,
+    borderWidth: 3,
     padding: 6,
     borderRadius: 16,
+    color: colors.lightGrey,
   },
 });
 

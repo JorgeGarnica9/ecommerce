@@ -11,7 +11,7 @@ const Search = ({ keyword, setKeyword }) => {
         value={keyword}
         placeholder="Busca por nombre"
       />
-      <Ionicons name="search" size={32} color={colors.darkGrey} />
+      <Ionicons name="search" size={32} color={colors.white} />
     </View>
   );
 };
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   searchInput: {
-    backgroundColor: "#fff",
+    backgroundColor: colors.white,
     borderWidth: 2,
     borderColor: colors.lightGrey,
     width: "90%",

@@ -31,6 +31,9 @@ const ProductScreen = ({ route }) => {
         width="100%"
         height={width * 0.7}
         resizeMode="contain"
+        borderColor={colors.mediumBlue}
+        borderWidth={4}
+        style={{ borderRadius: 16 }}
       />
       <Text style={styles.longDescription}>{product.longDescription}</Text>
       <View style={styles.tagsContainer}>
@@ -64,6 +67,7 @@ const ProductScreen = ({ route }) => {
             type: "customToast",
             text1: "Producto agregado al carrito",
             text2: product.title,
+            props: {borderColor: colors.neonGreen},
             position: "top",
             visibilityTime: 2000,
           });
@@ -81,6 +85,7 @@ const styles = StyleSheet.create({
   productContainer: {
     paddingHorizontal: 16,
     marginVertical: 16,
+    backgroundColor: colors.darkGrey,
   },
   textBrand: {
     color: colors.darkGrey,
@@ -88,11 +93,13 @@ const styles = StyleSheet.create({
   textTitle: {
     fontSize: 24,
     fontWeight: "700",
+    color: colors.lightGrey,
   },
   longDescription: {
     fontSize: 16,
     textAlign: "justify",
     paddingVertical: 8,
+    color: colors.lightGrey,
   },
   tagsContainer: {
     flexDirection: "row",
@@ -104,16 +111,18 @@ const styles = StyleSheet.create({
   tags: {
     flexDirection: "row",
     gap: 5,
+
   },
   tagText: {
     fontWeight: "600",
     fontSize: 14,
-    color: colors.blue,
+    color: colors.lightGrey,
   },
-  price: {
-    fontWeight: "800",
-    fontSize: 18,
-  },
+  // price: {
+  //   fontWeight: "800",
+  //   fontSize: 18,
+  //   color: colors.lightGrey,
+  // },
   discount: {
     backgroundColor: colors.red,
     width: 52,
@@ -135,6 +144,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     alignSelf: "center",
     paddingVertical: 16,
+    color: colors.lightGrey,
   },
   addToCartButton: {
     padding: 8,

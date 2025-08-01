@@ -40,6 +40,7 @@ const SignupScreen = ({ navigation }) => {
         type: "customToast",
         text1: "No se ha podido crear el usuario",
         text2: "Revisa los datos ingresados",
+        props: {borderColor: colors.neonRed},
         position: "top",
         visibilityTime: 2000,
       });

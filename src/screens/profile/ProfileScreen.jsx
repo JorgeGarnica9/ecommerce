@@ -5,6 +5,7 @@ import {
   Pressable,
   Image,
   ActivityIndicator,
+  ScrollView,
 } from "react-native";
 import { colors } from "../../global/colors";
 import CameraIcon from "../../components/CameraIcon";
@@ -76,72 +77,75 @@ const ProfileScreen = () => {
   }, []);
 
   return (
-    <View style={styles.profileContainer}>
-      <View style={styles.imageProfileContainer}>
-        {image ? (
-          <Image
-            source={{ uri: image }}
-            resizeMode="cover"
-            style={styles.profileImage}
-          />
-        ) : (
-          <Text style={styles.textProfilePlaceHolder}>
-            {user.charAt(0).toUpperCase()}
-          </Text>
-        )}
-        <Pressable
-          onPress={pickImage}
-          style={({ pressed }) => [
-            { opacity: pressed ? 0.9 : 1 },
-            styles.cameraIcon,
-          ]}
-        >
-          <CameraIcon />
-        </Pressable>
-      </View>
-      <Text style={styles.profileData}>Email: {user}</Text>
-      <Pressable
-        onPress={() => {
-          clearSession();
-          dispatch(clearUser());
-        }}
-      >
-        <TextNova>Cerrar sesión</TextNova>
-      </Pressable>
-      <View style={styles.titleContainer}>
-        <Text>Mi ubicación:</Text>
-      </View>
-      <View style={styles.mapContainer}>
-        {location ? (
-          <MapView
-            style={styles.map}
-            initialRegion={{
-              latitude: location.coords.latitude,
-              longitude: location.coords.longitude,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
-            }}
+    <ScrollView>
+      <View style={styles.profileContainer}>
+        <View style={styles.imageProfileContainer}>
+          {image ? (
+            <Image
+              source={{ uri: image }}
+              resizeMode="cover"
+              style={styles.profileImage}
+            />
+          ) : (
+            <Text style={styles.textProfilePlaceHolder}>
+              {user.charAt(0).toUpperCase()}
+            </Text>
+          )}
+          <Pressable
+            onPress={pickImage}
+            style={({ pressed }) => [
+              { opacity: pressed ? 0.9 : 1 },
+              styles.cameraIcon,
+            ]}
           >
-            <Marker
-              coordinate={{
+            <CameraIcon />
+          </Pressable>
+        </View>
+        <Text style={styles.profileData}>Email: {user}</Text>
+        <Pressable
+          style={styles.endSessionBtn}
+          onPress={() => {
+            clearSession();
+            dispatch(clearUser());
+          }}
+        >
+          <TextNova style={{ color: colors.white }}>Cerrar sesión</TextNova>
+        </Pressable>
+        <View >
+          <Text style={styles.titleContainer}>Mi ubicación:</Text>
+        </View>
+        <View style={styles.mapContainer}>
+          {location ? (
+            <MapView
+              style={styles.map}
+              initialRegion={{
                 latitude: location.coords.latitude,
                 longitude: location.coords.longitude,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
               }}
-              title={"Freakystore"}
-            />
-          </MapView>
-        ) : locationLoaded ? (
-          <Text>Hubo un problema al obtener la ubicación</Text>
-        ) : (
-          <ActivityIndicator />
-        )}
-      </View>
-      <View style={styles.placeDescriptionContainer}>
-        <View style={styles.addressContainer}>
-          <Text style={styles.address}>{address || ""}</Text>
+            >
+              <Marker
+                coordinate={{
+                  latitude: location.coords.latitude,
+                  longitude: location.coords.longitude,
+                }}
+                title={"Freakystore"}
+              />
+            </MapView>
+          ) : locationLoaded ? (
+            <Text>Hubo un problema al obtener la ubicación</Text>
+          ) : (
+            <ActivityIndicator />
+          )}
+        </View>
+        <View style={styles.placeDescriptionContainer}>
+          <View style={styles.addressContainer}>
+            <Text style={styles.titleContainer}>{address || ""}</Text>
+          </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -152,6 +156,7 @@ const styles = StyleSheet.create({
     paddingTop: 32,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: colors.darkGrey,
   },
   imageProfileContainer: {
     width: 128,
@@ -167,8 +172,10 @@ const styles = StyleSheet.create({
     fontSize: 48,
   },
   profileData: {
-    paddingVertical: 16,
+    paddingVertical: 12,
     fontSize: 16,
+    fontWeight: "700",
+    color: colors.white,
   },
   cameraIcon: {
     position: "absolute",
@@ -186,19 +193,38 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     elevation: 5,
     marginBottom: 16,
-    borderColor: colors.blue,
-    borderWidth: 1,
+    borderColor: colors.lightBlue,
+    borderWidth: 3,
+    borderRadius: 16,
   },
   map: {
     height: 240,
   },
-  mapTitle: {
+  titleContainer: {
     fontWeight: "700",
+    color: colors.white,
+    gap: 8,
+    marginBottom: 8,
   },
   placeDescriptionContainer: {
     flexDirection: "row",
     gap: 16,
     width: "80%",
     marginBottom: 16,
+  },
+  endSessionBtn: {
+    padding: 4,
+    paddingHorizontal: 16,
+    backgroundColor: colors.darkGrey,
+    borderRadius: 16,
+    margin: 12,
+    borderLeftColor: colors.lightBlue,
+    borderLeftWidth: 8,
+    borderRightColor: colors.lightBlue,
+    borderRightWidth: 8,
+    borderTopColor: colors.lightBlue,
+    borderTopWidth: 1,
+    borderBottomColor: colors.lightBlue,
+    borderBottomWidth: 1,
   },
 });

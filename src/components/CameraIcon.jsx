@@ -5,7 +5,7 @@ import { colors } from "../global/colors";
 const CameraIcon = () => {
   return (
     <View style={styles.iconContainer}>
-      <Icon name="photo-camera" size={24} color={colors.white} />
+      <Icon name="photo-camera" size={24} color={colors.darkGrey} />
     </View>
   );
 };
@@ -16,11 +16,11 @@ const styles = StyleSheet.create({
   iconContainer: {
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.darkGrey,
+    backgroundColor: colors.lightGrey,
     width: 48,
     height: 48,
     borderRadius: 32,
-    borderColor: colors.lightGrey,
+    borderColor: colors.darkGrey,
     borderWidth: 2,
   },
 });
